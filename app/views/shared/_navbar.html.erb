@@ -1,0 +1,10 @@
+<nav class="text-white flex p-4 px-6 items-center">
+  <p class="text-2xl font-bold">Find My Rares</p>
+
+  <% if Current.user.nil? %>
+    <%= link_to "Sign up", signup_path, class: "ml-auto text-l hover:underline" %>
+    <%= link_to "Sign in", signup_path, class: "ml-4 text-l hover:underline" %>
+  <% else %>
+    <%= link_to "Dashboard", root_path, class: "ml-auto text-l hover:underline" %>
+  <%end %>
+</nav>

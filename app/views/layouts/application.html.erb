@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="EN">
   <head>
-    <title>Findmyrares</title>
+    <title>Find My Rares</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,6 +12,8 @@
   </head>
 
   <body class="bg-black">
+    <%= render "shared/navbar" %>
+
     <main class="container mx-auto mt-12 px-5 text-white">
       <%= yield %>
     </main>
