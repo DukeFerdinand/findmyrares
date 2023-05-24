@@ -1,8 +1,8 @@
-import React, {type FormEvent, useCallback, useEffect, useState} from 'react'
+import React, {useCallback, useEffect, useState} from 'react'
 
 interface SignupProps {
-    signupFormAction: string
-    signupFormUrl: string
+    signupFormUrl: string;
+    successPath: string;
 }
 
 const Signup: React.FC<SignupProps> = (props) => {
@@ -37,6 +37,10 @@ const Signup: React.FC<SignupProps> = (props) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(formState)
+        }).then(res => {
+            if (res.status === 200) {
+                window.location.replace(props.successPath)
+            }
         })
     }, [csrfToken, formState])
 
@@ -47,8 +51,9 @@ const Signup: React.FC<SignupProps> = (props) => {
             <form onSubmit={async (e) => {
                 e.preventDefault()
                 await submit()
-            }} className={"mt-8 flex flex-col"} action={props.signupFormAction} method={"post"}>
+            }} className={"mt-8 flex flex-col"}>
                 <input onPaste={handleChange} onInput={handleChange} className={"text-gray-700 rounded-lg mt-5 py-3"} name={"email"} placeholder={"Email"} type={"email"} />
+                <input onPaste={handleChange} onInput={handleChange} className={"text-gray-700 rounded-lg mt-5 py-3"} name={"username"} placeholder={"Username"} type={"text"} />
                 <input onPaste={handleChange} onInput={handleChange} className={"text-gray-700 rounded-lg mt-5 py-3"} name={"password"} placeholder={"Password"} type={"password"} />
                 <input onPaste={handleChange} onInput={handleChange} className={"text-gray-700 rounded-lg mt-5 py-3"} name={"password_confirmation"} placeholder={"Confirm Password"} type={"password"} />
                 <button className={"bg-blue-500 rounded-lg p-3 mt-5"} type={"submit"}>Submit</button>

@@ -9,7 +9,7 @@ class RegistrationsController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_path, notice: "Successfully created account"
+      render :js => "window.location = '#{root_path}'",  notice: "Successfully created account"
     else
       render :new, status: 422
     end
@@ -17,8 +17,7 @@ class RegistrationsController < ApplicationController
 
   private
   def user_params
-    puts params.require(:registration).permit(:email, :password, :password_confirmation)
-    params.require(:registration).permit(:email, :password, :password_confirmation)
+    params.require(:registration).permit(:email, :username, :password, :password_confirmation)
   end
 end
 
