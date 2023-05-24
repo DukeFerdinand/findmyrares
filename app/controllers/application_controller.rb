@@ -12,6 +12,6 @@ class ApplicationController < ActionController::Base
   end
 
   def require_not_logged_in!
-    redirect_to root_path, alert: "You're already signed in!" unless Current.user.nil?
+    redirect_to dashboard_path, alert: "You're already signed in!" unless Current.user.nil?
   end
 end
