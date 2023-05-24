@@ -1,1 +1,57 @@
-<h1>Welcome to your dashboard!</h1>
+<section>
+  <p class="text-lg">Welcome, <%= Current.user[:username] %>! Here's how you're looking today.</p>
+
+  <div class="grid grid-cols-2 gap-4 mt-8">
+    <div class="bg-gray-800 px-6 pt-6 pb-12 rounded-3xl col-span-2">
+      <p class="text-center text-xl font-bold mb-6">Rare Stats</p>
+      <div class="flex px-6 md:px-0 justify-between md:justify-around">
+        <div>
+          <%= link_to "In Search List", root_path, class: "hover:underline text-lg font-bold" %>
+          <p class="text-5xl font-bold mt-2">27</p>
+        </div>
+        <div>
+          <%= link_to "Listings Found", root_path, class: "text-green-500 hover:underline text-lg font-bold" %>
+          <p class="text-green-500 text-5xl font-bold mt-2">8</p>
+        </div>
+        <div>
+          <%= link_to "Ending Soon", root_path, class: "text-yellow-500 hover:underline text-lg font-bold" %>
+          <p class="text-5xl text-yellow-500 font-bold mt-2">3</p>
+        </div>
+      </div>
+    </div>
+    <div class="bg-gray-800 px-6 py-6 rounded-3xl xs:col-span-2">
+      <h3 class="text-xl font-bold">Recently Added</h3>
+      <table class="w-full table-fixed mt-6">
+        <thead>
+          <tr class="border-b">
+            <th class="pb-4">Term</th>
+            <th class="pb-4">Last Checked</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="py-4 text-center">Tatsuro Yamashita</td>
+            <td class="py-4 text-center">Never</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="text-center pt-6">
+              <%= link_to "Show All", root_path, class: "hover:underline" %>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+    <div class="bg-gray-800 px-6 py-6 rounded-3xl xs:col-span-2">
+      <h3 class="text-xl font-bold">Recently Found</h3>
+      <table class="w-full table-fixed">
+        <tr>
+          <td class="pt-16">
+            <p class="text-center">Nothing found recently</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</section>
